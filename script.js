@@ -8,15 +8,21 @@ btn.addEventListener("click", () => {
     paraEle.innerHTML = `* Please add your task *`;
   } else {
     let listEle = document.createElement("li");
-    listEle.innerHTML = inputEle.value;
+    listEle.textContent = inputEle.value;
     list.appendChild(listEle);
 
-    // let span = document.createElement("span");
-    // span.innerHTML = "\u00d7";
+    let span = document.createElement("span");
+    span.textContent = "\u00d7";
     // span.className = "close";
-    // list.appendChild(span);
+    list.appendChild(span);
   }
   inputEle.value = "";
+});
+
+list.addEventListener("click", (e) => {
+  if(e.target.tagName === "LI"){
+    e.target.classList.toggle("line");
+  }
 });
 
 
