@@ -1,39 +1,34 @@
 const btn = document.querySelector("#btn");
 const inputEle = document.querySelector("#input");
 const paraEle = document.querySelector("#paragraph");
-const list = document.querySelector("#lists");
+const ulist = document.querySelector("#lists");
 
 btn.addEventListener("click", () => {
-  if (inputEle.value === "") {
-    paraEle.innerHTML = `* Please add your task *`;
-  } else {
-    let listEle = document.createElement("li");
-    listEle.textContent = inputEle.value;
-    list.appendChild(listEle);
-
-    let span = document.createElement("span");
-    span.textContent = "\u00d7";
-    // span.className = "close";
-    list.appendChild(span);
+  const taskText = inputEle.value.trim();
+  if (taskText === "") {
+    paraEle.textContent = "* Please add your task *";
+    return;
   }
+
+  const listEle = document.createElement("li");
+  listEle.textContent = taskText;
+  ulist.appendChild(listEle);
+
+  const span = document.createElement("span");
+  span.textContent = "\u00d7";
+  span.className = "close";
+  listEle.appendChild(span);
+
+  span.addEventListener("click", () => {
+    listEle.remove();
+  });
+
+  paraEle.textContent = "";
   inputEle.value = "";
 });
 
-list.addEventListener("click", (e) => {
-  if(e.target.tagName === "LI"){
+ulist.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
     e.target.classList.toggle("line");
   }
 });
-
-
-
-// function clickMe(){
-//     if(inputEle.value === ""){
-//         paraEle.innerHTML = `* Please add your task *`;
-//     }else {
-//         let listEle = document.createElement("li");
-//         listEle.innerHTML = inputEle.value;
-//         list.appendChild(listEle);
-//     }
-//     inputEle.value = "";
-// }

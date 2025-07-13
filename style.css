@@ -90,10 +90,12 @@ li::before {
 }
 
 .close {
-  font-size: 35px;
+  font-size: 18px;
   font-weight: 900;
   color: wheat;
   background-color: red;
   border-radius: 50%;
-  padding: 0 15px 5px 15px;
+  padding: 0px 8px 2px 8px;
+  position: absolute;
+  left: 470px;
 }
