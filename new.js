@@ -24,20 +24,17 @@ function render(array) {
     const divEle = document.createElement("div");
     output.appendChild(divEle);
     divEle.className = "innerDiv";
-    const span = document.createElement("span");
-    span.textContent = "\u00d7";
-    span.className = "close";
-    divEle.appendChild(span);
-    divEle.innerHTML += `${array[i].name}`;
+    divEle.innerHTML += `<div class = "outerDiv">
+    <div class = "innerOne">${array[i].name} </div> 
+    <div><i class="fa-solid fa-trash innerTwo" onclick="delTask(${i})"></i></div>
+    </div>`;
   }
 }
 
-// function select() {
-//   const span = document.createElement("span");
-//   span.textContent = "\u00d7";
-//   span.className = "close";
-//   divEle.appendChild(span);
-// }
+function delTask(i) {
+  array.splice(i, 1);
+  render(array);
+}
 
 function add() {
   const tasks = input.value.trim();
@@ -57,6 +54,6 @@ input.addEventListener("keyup", (e) => {
   if (e.key === "Enter") add();
 });
 
-span.addEventListener("click", () => {
-  divEle.remove();
-})
+// span.addEventListener("click", () => {
+//   divEle.remove();
+// })
